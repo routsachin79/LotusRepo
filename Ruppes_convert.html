@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.converter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 200px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="converter">
+            <label for="rupees">Rupees (INR):</label>
+            <input type="number" id="rupees" placeholder="Enter amount in INR">
+            <button id="convertBtn">Convert to USD</button>
+            <p id="result"></p>
+        </div>
+    </div>
+    <script>document.getElementById('convertBtn').addEventListener('click', convertCurrency);
+
+function convertCurrency() {
+    const rupees = parseFloat(document.getElementById('rupees').value);
+    const exchangeRate = 0.012; // Example exchange rate from INR to USD
+
+    if (isNaN(rupees)) {
+        alert('Please enter a valid number');
+        return;
+    }
+
+    const dollars = (rupees * exchangeRate).toFixed(2);
+    document.getElementById('result').innerText = `USD: $${dollars}`;
+}
+</script>
+</body>
+</html>
